@@ -1,27 +1,17 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    kotlin("jvm") version "1.9.0"
-    application
+    alias(deps.plugins.publish) apply true
 }
+true // Needed to make the Suppress annotation work for the plugins block
 
-group = "io.github.pavelannin"
-version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-kotlin {
-    jvmToolchain(8)
-}
-
-application {
-    mainClass.set("MainKt")
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            stagingProfileId.set(property("sonatypeStagingProfileId").toString())
+            username.set(project.property("ossrhUsername").toString())
+            password.set(project.property("ossrhPassword").toString())
+        }
+    }
 }

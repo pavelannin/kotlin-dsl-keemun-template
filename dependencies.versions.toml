@@ -1,0 +1,14 @@
+[versions]
+kotlin-language = "1.8.22"
+
+[libraries]
+plantuml-generator = { module = "io.github.pavelannin:kotlin-plantuml-generator", version = "1.0.1" }
+kotlin-compiler = { module = "org.jetbrains.kotlin:kotlin-compiler", version.ref = "kotlin-language" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin-language" }
+kotlin-compiler-embeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable", version.ref = "kotlin-language" }
+kotlin-script-runtime = { module = "org.jetbrains.kotlin:kotlin-script-runtime", version.ref = "kotlin-language" }
+kotlin-script-util = { module = "org.jetbrains.kotlin:kotlin-script-util", version.ref = "kotlin-language" }
+kotlin-script-jsr223 = { module = "org.jetbrains.kotlin:kotlin-scripting-jsr223", version.ref = "kotlin-language" }
+
+[plugins]
+publish = { id = "io.github.gradle-nexus.publish-plugin", version = "1.3.0" }
